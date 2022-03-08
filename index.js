@@ -11,9 +11,50 @@ app.get('/categories', (req, res) => {
 })
 
 app.get('/products', (req, res) => {
+  res.json([
+    {
+      name: 'Product 1',
+      price: 1000
+    },
+    {
+      name: 'Product 2',
+      price: 2000
+    }
+  ])
+})
+
+// Endpoint con parámetros
+app.get('/products/:id', (req, res) => {
+  const { id } = req.params
   res.json({
-    name: 'Product 1',
-    price: 1000
+    id,
+    name: 'Product 2',
+    price: 2000
+  })
+})
+
+// Endpoint con múltiples parámetros
+app.get('/categories/:categoryId/products/:productId', (req, res) => {
+  const { categoryId, productId } = req.params
+  res.json({
+    categoryId,
+    productId
+  })
+})
+
+app.get('/category/:id', (req, res) => {
+  const { id } = req.params
+  res.json({
+    id,
+    category: 'Product category'
+  })
+})
+
+app.get('/users/:id', (req, res) => {
+  const { id } = req.params
+  res.json({
+    id,
+    type: 'User type'
   })
 })
 
