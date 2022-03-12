@@ -31,8 +31,8 @@ router.get('/:id', (req, res) => {
   } else {
     res.status(200).json({
       id,
-      name: 'Product 2',
-      price: 2000
+      name: faker.commerce.productName(),
+      price: parseInt(faker.commerce.price(), 10)
     })
   }
 })
