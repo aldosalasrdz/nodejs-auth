@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
   res.json(categories)
 })
 
-// Endpoint con múltiples parámetros
 router.get('/:categoryId/products/:productId', (req, res) => {
   const { categoryId, productId } = req.params
   res.json({
