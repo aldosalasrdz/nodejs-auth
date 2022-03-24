@@ -5,7 +5,7 @@ const port = 3000
 
 app.use(express.json())
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Bienvenido al sitio web de PROFLOR DEL NORTE')
 })
 
