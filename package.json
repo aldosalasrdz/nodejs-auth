@@ -15,12 +15,12 @@
     "eslint": "8.10.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
-    "faker": "5.5.3",
     "nodemon": "2.0.15",
     "prettier": "2.5.1"
   },
   "dependencies": {
     "@hapi/boom": "9.1.4",
-    "express": "4.17.3"
+    "express": "4.17.3",
+    "faker": "5.5.3"
   }
 }
