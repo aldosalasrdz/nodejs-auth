@@ -23,7 +23,7 @@ const options = {
 app.use(cors(options))
 
 app.get('/', (req, res) => {
-  res.send('Bienvenido al sitio web de PROFLOR DEL NORTE')
+  res.send('Hola mi server en Express')
 })
 
 routerApi(app)
