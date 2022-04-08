@@ -1,13 +1,15 @@
 const faker = require('faker')
 const boom = require('@hapi/boom')
 
+const getConnection = require('../libs/postgres')
+
 class UsersService {
   constructor() {
-    this.users = []
-    this.generate()
+    /* this.users = []
+    this.generate() */
   }
 
-  generate() {
+  /* generate() {
     const limit = 100
     for (let i = 0; i < limit; i++) {
       this.users.push({
@@ -18,7 +20,7 @@ class UsersService {
         isPrivate: faker.datatype.boolean()
       })
     }
-  }
+  } */
 
   async create(data) {
     const newUser = {
@@ -30,7 +32,9 @@ class UsersService {
   }
 
   async find() {
-    return this.users
+    const client = await getConnection()
+    const response = await client.query('SELECT * FROM tasks')
+    return response
   }
 
   async findOne(id) {
