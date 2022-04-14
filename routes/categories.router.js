@@ -12,14 +12,6 @@ router.get('/', async (req, res) => {
   res.json(categories)
 })
 
-router.get('/:categoryId/products/:productId', (req, res) => {
-  const { categoryId, productId } = req.params
-  res.json({
-    categoryId,
-    productId
-  })
-})
-
 router.get('/:id',
   validatorHandler(getCategorySchema, 'params'),
   async (req, res, next) => {
