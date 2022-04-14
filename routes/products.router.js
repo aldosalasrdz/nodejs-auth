@@ -37,7 +37,7 @@ router.post('/',
       const newProduct = await service.create(body)
       res.status(201).json(newProduct)
     } catch (error) {
-      next()
+      next(error)
     }
   }
 )
