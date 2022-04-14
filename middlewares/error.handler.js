@@ -1,12 +1,11 @@
-function logErrors(err, req, res, next) {
+function logErrors (err, req, res, next) {
   console.error(err)
   next(err)
 }
 
 function errorHandler(err, req, res, next) {
   res.status(500).json({
-    message: err.message,
-    stack: err.stack
+    message: err.message
   })
 }
 
@@ -15,7 +14,7 @@ function boomErrorHandler(err, req, res, next) {
     const { output } = err
     res.status(output.statusCode).json(output.payload)
   } else {
-    next()
+    next(err)
   }
 }
 
