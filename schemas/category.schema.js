@@ -1,14 +1,14 @@
 const Joi = require('joi')
 
-const id = Joi.string().uuid()
-const category = Joi.string().min(3).max(15)
+const id = Joi.number().integer()
+const name = Joi.string().min(3).max(15)
 
 const createCategorySchema = Joi.object({
-  category: category.required()
+  name: name.required()
 })
 
 const updateCategorySchema = Joi.object({
-  category
+  name
 })
 
 const getCategorySchema = Joi.object({
