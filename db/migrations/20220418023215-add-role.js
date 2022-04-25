@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const { UserSchema, USER_TABLE } = require('../models/user.model')
 
