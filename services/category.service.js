@@ -11,8 +11,8 @@ class CategoryService {
   }
 
   async find() {
-    const response = await models.Category.findAll()
-    return response
+    const categories = await models.Category.findAll()
+    return categories
   }
 
   async findOne(id) {

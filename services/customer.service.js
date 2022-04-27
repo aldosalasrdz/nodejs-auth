@@ -13,10 +13,10 @@ class CustomerService {
   }
 
   async find() {
-    const response = await models.Customer.findAll({
+    const customers = await models.Customer.findAll({
       include: ['user']
     })
-    return response
+    return customers
   }
 
   async findOne(id) {
