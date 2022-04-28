@@ -26,13 +26,13 @@ class ProductService {
   }
 
   async updateProduct(id, changes) {
-    const product = await this.findOne(id)
+    const product = await this.findOneProduct(id)
     const response = await product.update(changes)
     return response
   }
 
   async deleteProduct(id) {
-    const product = await this.findOne(id)
+    const product = await this.findOneProduct(id)
     await product.destroy()
     return { id }
   }

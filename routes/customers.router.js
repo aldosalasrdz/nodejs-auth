@@ -9,7 +9,7 @@ const service = new CustomerService()
 
 router.get('/', async (req, res, next) => {
   try {
-    const products = await service.find()
+    const products = await service.findCustomer()
     res.json(products)
   } catch (error) {
     next(error)
@@ -21,7 +21,7 @@ router.get('/:id',
   async (req, res, next) => {
     try {
       const { id } = req.params
-      const product = await service.findOne(id)
+      const product = await service.findOneCustomer(id)
       res.json(product)
     } catch (error) {
       next(error)
@@ -34,7 +34,7 @@ router.post('/',
   async (req, res, next) => {
     try {
       const body = req.body
-      const newProduct = await service.create(body)
+      const newProduct = await service.createCustomer(body)
       res.status(201).json(newProduct)
     } catch (error) {
       next(error)
@@ -49,7 +49,7 @@ router.patch('/:id',
     try {
       const { id } = req.params
       const body = req.body
-      const product = await service.update(id, body)
+      const product = await service.updateCustomer(id, body)
       res.json(product)
     } catch (error) {
       next(error)
@@ -62,7 +62,7 @@ router.delete('/:id',
   async (req, res, next) => {
     try {
       const { id } = req.params
-      const response = await service.delete(id)
+      const response = await service.deleteCustomer(id)
       res.json(response)
     } catch (error) {
       next(error)

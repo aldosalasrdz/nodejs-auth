@@ -28,13 +28,13 @@ class CustomerService {
   }
 
   async updateCustomer(id, changes) {
-    const customer = await this.findOne(id)
+    const customer = await this.findOneCustomer(id)
     const response = await customer.update(changes)
     return response
   }
 
   async deleteCustomer(id) {
-    const customer = await this.findOne(id)
+    const customer = await this.findOneCustomer(id)
     await customer.destroy()
     return { id }
   }

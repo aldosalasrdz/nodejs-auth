@@ -26,13 +26,13 @@ class CategoryService {
   }
 
   async updateCategory(id, changes) {
-    const category = await this.findOne(id)
+    const category = await this.findOneCategory(id)
     const response = await category.update(changes)
     return response
   }
 
   async deleteCategory(id) {
-    const category = await this.findOne(id)
+    const category = await this.findOneCategory(id)
     await category.destroy()
     return { id }
   }

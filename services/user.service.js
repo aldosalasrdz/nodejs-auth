@@ -26,13 +26,13 @@ class UserService {
   }
 
   async updateUser(id, changes) {
-    const user = await this.findOne(id)
+    const user = await this.findOneUser(id)
     const response = await user.update(changes)
     return response
   }
 
   async deleteUser(id) {
-    const user = await this.findOne(id)
+    const user = await this.findOneUser(id)
     await user.destroy()
     return { id }
   }
