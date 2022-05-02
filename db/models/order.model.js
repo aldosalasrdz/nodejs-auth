@@ -36,11 +36,11 @@ const OrderSchema = {
 }
 
 class Order extends Model {
-  static associate(models) {
+  static associate (models) {
     this.belongsTo(models.Customer, { as: 'customer' })
   }
 
-  static config(sequelize) {
+  static config (sequelize) {
     return {
       sequelize,
       tableName: ORDER_TABLE,

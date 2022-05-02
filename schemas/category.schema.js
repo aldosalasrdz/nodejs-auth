@@ -19,4 +19,3 @@ const getCategorySchema = Joi.object({
 })
 
 module.exports = { createCategorySchema, updateCategorySchema, getCategorySchema }
-

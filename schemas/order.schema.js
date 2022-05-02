@@ -14,4 +14,3 @@ const getOrderSchema = Joi.object({
 })
 
 module.exports = { createOrderSchema, getOrderSchema }
-

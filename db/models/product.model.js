@@ -48,11 +48,11 @@ const ProductSchema = {
 }
 
 class Product extends Model {
-  static associate(models) {
+  static associate (models) {
     this.belongsTo(models.Category, { as: 'category' })
   }
 
-  static config(sequelize) {
+  static config (sequelize) {
     return {
       sequelize,
       tableName: PRODUCT_TABLE,

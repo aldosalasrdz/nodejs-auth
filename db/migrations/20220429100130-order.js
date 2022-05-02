@@ -11,5 +11,3 @@ module.exports = {
     await queryInterface.dropTable(ORDER_TABLE)
   }
 }
-
-

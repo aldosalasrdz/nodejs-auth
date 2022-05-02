@@ -1,21 +1,22 @@
+/* eslint-disable no-useless-constructor */
 const boom = require('@hapi/boom')
 
 const { models } = require('./../libs/sequelize')
 
 class CategoryService {
-  constructor() {}
+  constructor () {}
 
-  async createCategory(data) {
+  async createCategory (data) {
     const newCategory = await models.Category.create(data)
     return newCategory
   }
 
-  async findCategory() {
+  async findCategory () {
     const categories = await models.Category.findAll()
     return categories
   }
 
-  async findOneCategory(id) {
+  async findOneCategory (id) {
     const category = await models.Category.findByPk(id, {
       include: ['products']
     })
@@ -25,13 +26,13 @@ class CategoryService {
     return category
   }
 
-  async updateCategory(id, changes) {
+  async updateCategory (id, changes) {
     const category = await this.findOneCategory(id)
     const response = await category.update(changes)
     return response
   }
 
-  async deleteCategory(id) {
+  async deleteCategory (id) {
     const category = await this.findOneCategory(id)
     await category.destroy()
     return { id }

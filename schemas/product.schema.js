@@ -28,4 +28,3 @@ const getProductSchema = Joi.object({
 })
 
 module.exports = { createProductSchema, updateProductSchema, getProductSchema }
-

@@ -45,7 +45,7 @@ const CustomerSchema = {
 }
 
 class Customer extends Model {
-  static associate(models) {
+  static associate (models) {
     this.belongsTo(models.User, { as: 'user' })
     this.hasMany(models.Order, {
       as: 'orders',
@@ -53,7 +53,7 @@ class Customer extends Model {
     })
   }
 
-  static config(sequelize) {
+  static config (sequelize) {
     return {
       sequelize,
       tableName: CUSTOMER_TABLE,

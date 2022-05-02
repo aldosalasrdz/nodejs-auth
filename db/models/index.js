@@ -4,7 +4,7 @@ const { Product, ProductSchema } = require('./product.model')
 const { Customer, CustomerSchema } = require('./customer.model')
 const { Order, OrderSchema } = require('./order.model')
 
-function setupModels(sequelize) {
+function setupModels (sequelize) {
   User.init(UserSchema, User.config(sequelize))
   Category.init(CategorySchema, Category.config(sequelize))
   Product.init(ProductSchema, Product.config(sequelize))

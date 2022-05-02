@@ -21,4 +21,3 @@ const getUserSchema = Joi.object({
 })
 
 module.exports = { createUserSchema, updateUserSchema, getUserSchema }
-
