@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-constructor */
 const boom = require('@hapi/boom')
 
 const { models } = require('./../libs/sequelize')
