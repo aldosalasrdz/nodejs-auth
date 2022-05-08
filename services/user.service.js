@@ -11,7 +11,7 @@ class UserService {
     return newUser
   }
 
-  async findUser () {
+  async findUsers () {
     const users = await models.User.findAll({
       include: ['customer']
     })

@@ -11,7 +11,7 @@ class OrderService {
     return newOrder
   }
 
-  async findOrder () {
+  async findOrders () {
     const orders = await models.Order.findAll()
     return orders
   }
