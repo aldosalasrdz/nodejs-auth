@@ -28,6 +28,12 @@ app.get('/', (req, res) => {
 
 routerApi(app)
 
+app.use((req, res, next) => {
+  const err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
+
 app.use(logErrors)
 app.use(ormErrorHandler)
 app.use(boomErrorHandler)
