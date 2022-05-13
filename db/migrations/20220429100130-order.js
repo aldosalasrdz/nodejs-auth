@@ -3,6 +3,7 @@
 const { DataTypes, Sequelize } = require('sequelize')
 
 const { ORDER_TABLE } = require('../models/order.model')
+const { CUSTOMER_TABLE } = require('../models/customer.model')
 
 module.exports = {
   async up (queryInterface) {
@@ -21,7 +22,13 @@ module.exports = {
       customerId: {
         allowNull: false,
         field: 'customer_id',
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: CUSTOMER_TABLE,
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       },
       createdAt: {
         allowNull: false,
