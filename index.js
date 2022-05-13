@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const routerApi = require('./routes')
 
+const boom = require('@hapi/boom')
+
 const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler')
 
 const app = express()
@@ -29,8 +31,7 @@ app.get('/', (req, res) => {
 routerApi(app)
 
 app.use((req, res, next) => {
-  const err = new Error('Not Found')
-  err.status = 404
+  const err = boom.notFound('Not Found')
   next(err)
 })
 
