@@ -1,5 +1,8 @@
-# Curso de Backend con Node.js: Base de Datos con PostgreSQL
+# Curso de Backend con Node.js: Autenticación con Passport.js y JWT
 
-Proyecto del curso de Platzi donde usaremos PostgreSQL como base de datos.
+## Características del proyecto
 
-Url del proyecto:
+- Envió emails con tokens para recuperar contraseñas
+- Protección de rutas y control de roles a tu API
+- Integración de Passport.js y JSON Web Tokens a Express.js
+- Autenticación y autorización de usuarios en Node.js
