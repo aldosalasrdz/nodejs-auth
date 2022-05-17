@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const routerApi = require('./routes')
+const checkApiKey = require('./middlewares/auth.handler')
 
 const boom = require('@hapi/boom')
 
@@ -26,6 +27,10 @@ app.use(cors(options))
 
 app.get('/', (req, res) => {
   res.send('Hola mi server en Express')
+})
+
+app.get('/nueva-ruta', checkApiKey, (req, res, next) => {
+  res.send('Hola soy una nueva ruta')
 })
 
 routerApi(app)

@@ -13,7 +13,8 @@ const config = {
   pgPassword: process.env.PG_PASSWORD,
   pgPort: process.env.PG_PORT,
   pgRefPort: process.env.PG_REFPORT,
-  dbUrl: process.env.DATABASE_URL
+  dbUrl: process.env.DATABASE_URL,
+  apiKey: process.env.API_KEY
 }
 
 module.exports = { config }
