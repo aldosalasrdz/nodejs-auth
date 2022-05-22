@@ -25,6 +25,8 @@ const options = {
 
 app.use(cors(options))
 
+require('./utils/auth')
+
 app.get('/', (req, res) => {
   res.send('Hola mi server en Express')
 })
@@ -36,8 +38,7 @@ app.get('/nueva-ruta', checkApiKey, (req, res, next) => {
 routerApi(app)
 
 app.use((req, res, next) => {
-  const err = boom.notFound()
-  next(err)
+  next(boom.notFound())
 })
 
 app.use(logErrors)
@@ -46,5 +47,5 @@ app.use(boomErrorHandler)
 app.use(errorHandler)
 
 app.listen(port, () => {
-  console.log('Mi port', port)
+  console.log(`Listening at http://localhost:${port}`)
 })
