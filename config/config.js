@@ -14,7 +14,8 @@ const config = {
   pgPort: process.env.PG_PORT,
   pgRefPort: process.env.PG_REFPORT,
   dbUrl: process.env.DATABASE_URL,
-  apiKey: process.env.API_KEY
+  apiKey: process.env.API_KEY,
+  jwtSecret: process.env.JWT_SECRET
 }
 
 module.exports = { config }
