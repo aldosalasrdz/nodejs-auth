@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const routerApi = require('./routes')
-const checkApiKey = require('./middlewares/auth.handler')
+const { checkApiKey } = require('./middlewares/auth.handler')
 
 const boom = require('@hapi/boom')
 
