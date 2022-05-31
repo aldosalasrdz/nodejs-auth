@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-constructor */
 const boom = require('@hapi/boom')
+const { User } = require('../db/models/user.model')
 
 const { models } = require('./../libs/sequelize')
 
@@ -7,13 +8,43 @@ class OrderService {
   constructor () {}
 
   async createOrder (data) {
-    const newOrder = await models.Order.create(data)
+    const customer = await models.Customer.findOne({
+      where: {
+        '$user.id$': data.userId
+      },
+      include: ['user']
+    })
+    if (!customer) {
+      throw boom.badRequest('Customer not found')
+    }
+    const newOrder = await models.Order.create({
+      customerId: customer.id
+    })
     return newOrder
   }
 
   async addItem (data) {
     const newItem = await models.OrderProduct.create(data)
     return newItem
+  }
+
+  async findOrdersByUser (userId) {
+    const orders = await models.Order.findAll({
+      where: {
+        '$customer.user.id$': userId
+      },
+      include: [{
+        association: 'customer',
+        include: [{
+          model: User,
+          as: 'user',
+          attributes: {
+            exclude: ['password']
+          }
+        }]
+      }]
+    })
+    return orders
   }
 
   async findOrders () {
@@ -25,12 +56,17 @@ class OrderService {
 
   async findOneOrder (id) {
     const order = await models.Order.findByPk(id, {
-      include: [
-        {
-          association: 'customer',
-          include: ['user']
-        },
-        'items'
+      include: [{
+        association: 'customer',
+        include: [{
+          model: User,
+          as: 'user',
+          attributes: {
+            exclude: ['password']
+          }
+        }]
+      },
+      'items'
       ]
     })
     if (!order) {
