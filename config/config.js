@@ -15,7 +15,9 @@ const config = {
   pgRefPort: process.env.PG_REFPORT,
   dbUrl: process.env.DATABASE_URL,
   apiKey: process.env.API_KEY,
-  jwtSecret: process.env.JWT_SECRET
+  jwtSecret: process.env.JWT_SECRET,
+  nodemailerUser: process.env.NODEMAILER_USER,
+  nodemailerPassword: process.env.NODEMAILER_PASSWORD
 }
 
 module.exports = { config }
