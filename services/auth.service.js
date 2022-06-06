@@ -35,11 +35,26 @@ class AuthService {
     }
   }
 
-  async sendMail (email) {
+  async sendRecoveryLink (email) {
     const user = await service.findUserByEmail(email)
     if (!user) {
       throw boom.unauthorized()
     }
+    const payload = { sub: user.id }
+    const token = jwt.sign(payload, config.jwtSecret, { expiresIn: '15min' })
+    const link = `http://myfrontend.com/recovery?token=${token}`
+    await service.updateUser(user.id, { recoveryToken: token })
+    const mail = {
+      from: config.nodemailerUser,
+      to: user.email,
+      subject: 'Password recovery email',
+      html: `<b>Click on the following link to recover your password: ${link}</b>`
+    }
+    const response = await this.sendMail(mail)
+    return response
+  }
+
+  async sendMail (infoMail) {
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       secure: true,
@@ -50,13 +65,7 @@ class AuthService {
       }
     })
 
-    await transporter.sendMail({
-      from: config.nodemailerUser,
-      to: user.email,
-      subject: 'Prueba de correo',
-      text: 'Correo enviado con Nodemailer',
-      html: '<b>Correo enviado con Nodemailer</b>'
-    })
+    await transporter.sendMail(infoMail)
     return { message: 'Mail sent successfully' }
   }
 }

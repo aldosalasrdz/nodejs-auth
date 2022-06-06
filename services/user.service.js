@@ -20,7 +20,7 @@ class UserService {
   async findUsers () {
     const users = await models.User.findAll({
       attributes: {
-        exclude: ['password']
+        exclude: ['password', 'recoveryToken']
       },
       include: ['customer']
     })
@@ -37,7 +37,7 @@ class UserService {
   async findOneUser (id) {
     const user = await models.User.findByPk(id, {
       attributes: {
-        exclude: ['password']
+        exclude: ['password', 'recoveryToken']
       }
     })
     if (!user) {

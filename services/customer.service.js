@@ -30,7 +30,7 @@ class CustomerService {
         model: User,
         as: 'user',
         attributes: {
-          exclude: ['password']
+          exclude: ['password', 'recoveryToken']
         }
       }]
     })
