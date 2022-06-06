@@ -39,7 +39,7 @@ class OrderService {
           model: User,
           as: 'user',
           attributes: {
-            exclude: ['password']
+            exclude: ['password', 'recoveryToken']
           }
         }]
       }]
@@ -62,7 +62,7 @@ class OrderService {
           model: User,
           as: 'user',
           attributes: {
-            exclude: ['password']
+            exclude: ['password', 'recoveryToken']
           }
         }]
       },

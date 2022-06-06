@@ -14,14 +14,12 @@ class UserService {
       password: hash
     })
     delete newUser.dataValues.password
+    delete newUser.dataValues.recoveryToken
     return newUser
   }
 
   async findUsers () {
     const users = await models.User.findAll({
-      attributes: {
-        exclude: ['password', 'recoveryToken']
-      },
       include: ['customer']
     })
     return users
@@ -35,11 +33,7 @@ class UserService {
   }
 
   async findOneUser (id) {
-    const user = await models.User.findByPk(id, {
-      attributes: {
-        exclude: ['password', 'recoveryToken']
-      }
-    })
+    const user = await models.User.findByPk(id)
     if (!user) {
       throw boom.notFound('User not found')
     }

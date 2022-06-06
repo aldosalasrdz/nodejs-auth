@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-constructor */
 const boom = require('@hapi/boom')
 const bcrypt = require('bcrypt')
-const { User } = require('../db/models/user.model')
 
 const { models } = require('./../libs/sequelize')
 
@@ -21,19 +20,12 @@ class CustomerService {
       include: ['user']
     })
     delete newCustomer.user.dataValues.password
+    delete newCustomer.user.dataValues.recoveryToken
     return newCustomer
   }
 
   async findCustomers () {
-    const customers = await models.Customer.findAll({
-      include: [{
-        model: User,
-        as: 'user',
-        attributes: {
-          exclude: ['password', 'recoveryToken']
-        }
-      }]
-    })
+    const customers = await models.Customer.findAll()
     return customers
   }
 
