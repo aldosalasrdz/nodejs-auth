@@ -20,6 +20,9 @@ class UserService {
 
   async findUsers () {
     const users = await models.User.findAll({
+      attributes: {
+        exclude: ['password', 'recoveryToken']
+      },
       include: ['customer']
     })
     return users

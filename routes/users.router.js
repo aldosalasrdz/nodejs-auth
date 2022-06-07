@@ -22,6 +22,8 @@ router.get('/:id',
     try {
       const { id } = req.params
       const user = await service.findOneUser(id)
+      delete user.dataValues.password
+      delete user.dataValues.recoveryToken
       res.json(user)
     } catch (error) {
       next(error)
